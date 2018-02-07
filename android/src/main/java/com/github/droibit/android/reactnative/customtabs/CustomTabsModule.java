@@ -1,5 +1,6 @@
 package com.github.droibit.android.reactnative.customtabs;
 
+import android.content.Intent;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -172,6 +173,9 @@ public class CustomTabsModule extends ReactContextBaseJavaModule {
                                 break;
                         }
                     }
+                    // Added flags so that redirects would go automatically back to the app
+                    customTabsIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    customTabsIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     customTabsIntent.intent.putExtra(Browser.EXTRA_HEADERS, headers);
                 }
             }
